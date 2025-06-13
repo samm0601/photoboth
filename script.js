@@ -145,7 +145,7 @@ function startCountdownAndCapture(callback) {
 
 
 // Gesture detection dengan handtrack.js
-let handModel = null;
+let handModel = open;
 const gestureVideo = document.querySelector("video");
 
 const gestureParams = {
