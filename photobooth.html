@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ultimate Photobooth</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div id="flash" style="position:fixed;top:0;left:0;width:100%;height:100%;background:white;opacity:0;pointer-events:none;transition:opacity 0.3s;"></div>
+
+<div style="position: fixed; top: 70px; right: 20px; z-index: 1000;">
+  <label for="timerSelect" style="color:white;font-weight:bold;">Timer:</label>
+  <select id="timerSelect">
+    <option value="0">Off</option>
+    <option value="3">3s</option>
+    <option value="5">5s</option>
+    <option value="10">10s</option>
+  </select>
+</div>
+
+<div id="countdown" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);font-size:5em;color:white;font-weight:bold;z-index:1001;animation: pop 1s infinite;"></div>
+
+<style>
+@keyframes pop {
+  0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.5; }
+  50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 0.7; }
+}
+</style>
+
+        <button id="switchCameraBtn" style="position: fixed; top: 20px; right: 20px; z-index: 1000;">Switch Camera</button>
+  <h1>📸 Ultimate Photobooth</h1>
+  <div id="controls">
+    <label for="filter">Filter:</label>
+    <select id="filter">
+      <option value="none">None</option>
+      <option value="grayscale(100%)">Grayscale</option>
+      <option value="sepia(100%)">Sepia</option>
+      <option value="blur(5px)">Blur</option>
+      <option value="contrast(200%)">High Contrast</option>
+      <option value="brightness(1.5)">Bright</option>
+    </select>
+    <input type="text" id="caption" placeholder="Tambahkan tulisan..." />
+    <button onclick="capturePhoto()">📷 Ambil Foto</button>
+  </div>
+  <div id="camera-wrapper">
+    <video id="video" autoplay playsinline></video>
+    <div class="draggable" draggable="true">😎</div>
+    <div class="draggable" draggable="true">🔥</div>
+    <div class="draggable" draggable="true">🎉</div>
+    <div class="draggable" draggable="true">❤️</div>
+  </div>
+  <canvas id="canvas" style="display:none;"></canvas>
+  <div id="photo-container">
+    <img id="photo" alt="Captured" />
+    <a id="download" href="#" download="photo.png">⬇️ Download</a>
+    <a id="share-wa" href="#" target="_blank">📲 Share WhatsApp</a>
+    <a id="share-ig" href="#" target="_blank">📸 Share Instagram</a>
+  </div>
+  <h2>🖼️ Galeri Foto</h2>
+  <div id="gallery"></div>
+  <script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/handtrackjs@0.4.1/dist/handtrack.min.js"></script>
+
+<div style="position: fixed; bottom: 10px; left: 10px; z-index: 1000; background: rgba(0,0,0,0.5); padding: 10px; border-radius: 10px;">
+  <label style="color:white;">Filter:</label>
+  <select id="filterSelect">
+    <option value="none">None</option>
+    <option value="grayscale(100%)">Grayscale</option>
+    <option value="sepia(100%)">Sepia</option>
+    <option value="invert(100%)">Invert</option>
+    <option value="contrast(200%)">High Contrast</option>
+    <option value="blur(2px)">Blur</option>
+  </select>
+  <label style="color:white;margin-left:10px;">Emoji:</label>
+  <select id="emojiSelect">
+    <option value="">None</option>
+    <option value="😎">😎</option>
+    <option value="🎉">🎉</option>
+    <option value="👑">👑</option>
+    <option value="😂">😂</option>
+    <option value="❤️">❤️</option>
+  </select>
+</div>
+
+</body>
+</html>
